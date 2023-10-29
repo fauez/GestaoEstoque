@@ -5,10 +5,35 @@ namespace GestaoEstoque
 {
     internal class Produto
     {
-        public string Nome;
-        public double Preco;
-        public int Quantidade;
 
+        private string _nome;
+        public double Preco { get;  set; }
+        public int Quantidade { get;  set; }
+
+        public Produto() 
+        { 
+        
+        } // Aqui criamos um novo construtor chamada de sobre cargas, podento estacinar sem inptar valor
+
+
+        public Produto(string nome, double preco, int quantidade) 
+         {
+            _nome = nome;
+            Preco = preco;
+            Quantidade = quantidade;
+         }
+      
+        public string Nome
+        {
+            get { return _nome; }
+            set { 
+                if(value != null && value.Length > 1) 
+                { 
+                _nome = value;
+                }
+            }
+        }
+       
         public double ValorTotalEmEstoque()
         {
             return Preco * Quantidade;
